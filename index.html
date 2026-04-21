@@ -1527,74 +1527,205 @@
     </div>
   </div>
 
-  <!-- ═══════════════ HISTÓRICO ═══════════════ -->
-  <div class="tab-panel hidden" data-tab="historico">
-    <div class="page dash-page">
-      <div class="section-wrap" style="width:min(1440px,calc(100% - 32px));margin:0 auto;">
-        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;margin-bottom:20px;">
-          <div class="section-head" style="margin:0;"><h1>Histórico de Operações</h1><p>Registro completo de recomendações e resultados.</p></div>
-          <div class="filters">
-            <div class="search-field">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-              <input id="historySearch" type="text" placeholder="Buscar..."/>
-            </div>
-            <button class="field-btn">Últimos 30 dias</button>
-            <button class="field-btn">Todos os tipos</button>
-          </div>
+  <!-- ═══════════════ HISTÓRICO CIRCUMAT ═══════════════ -->
+<div class="tab-panel hidden" data-tab="historico">
+  <div class="page dash-page">
+    <div class="section-wrap" style="width:min(1440px,calc(100% - 32px));margin:0 auto;">
+
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;margin-bottom:20px;">
+        <div class="section-head" style="margin:0;">
+          <h1>Histórico de Decisões de Material</h1>
+          <p>Registro das simulações, comparações e impactos gerados.</p>
         </div>
-        <div class="grid grid-3">
-          <article class="card metric-card"><div class="metric-top"><div class="eyebrow">Total recomendações</div></div><div class="metric-value">47</div></article>
-          <article class="card metric-card" style="box-shadow:inset 3px 0 0 rgba(95,224,180,1),var(--shadow);border-color:rgba(95,224,180,0.28);"><div class="metric-top"><div class="eyebrow">Aprovadas</div></div><div class="metric-value">38 <span style="font-size:1.3rem;color:var(--green);">(81%)</span></div></article>
-          <article class="card metric-card" style="border-color:rgba(139,92,246,0.34);"><div class="metric-top"><div class="eyebrow" style="color:#c8b8ff;">Receita gerada</div></div><div class="metric-value">R$ 142.800</div></article>
-        </div>
-        <article class="card table-card" style="margin-top:20px;">
-          <div class="table-wrap">
-            <table>
-              <thead><tr><th>Data/Hora</th><th>Ação Recomendada</th><th>Motivo</th><th>Lucro Estimado</th><th>Lucro Real</th><th>Status</th></tr></thead>
-              <tbody id="historyTableBody">
-                <tr><td>24 Out 14:30</td><td>Aumentar vácuo bomba 2</td><td class="td-muted">Queda de pressão na linha</td><td>R$ 4.200</td><td class="td-green">R$ 4.350</td><td><span class="status aprovada">APROVADA</span></td></tr>
-                <tr><td>24 Out 11:15</td><td>Ajuste mix reagente B</td><td class="td-muted">Otimização de custo material</td><td>R$ 1.800</td><td class="td-soft">--</td><td><span class="status rejeitada">REJEITADA</span></td></tr>
-                <tr><td>23 Out 09:45</td><td>Reduzir RPM exaustor</td><td class="td-muted">Economia de energia horária</td><td>R$ 850</td><td class="td-soft">--</td><td><span class="status pendente">PENDENTE</span></td></tr>
-                <tr><td>22 Out 16:20</td><td>Limpeza filtro primário</td><td class="td-muted">Prevenção de sobrecarga</td><td>R$ 12.000</td><td class="td-green">R$ 11.500</td><td><span class="status aprovada">APROVADA</span></td></tr>
-                <tr><td>21 Out 10:05</td><td>Substituição válvula 4A</td><td class="td-muted">Vazamento detectado setor</td><td>R$ 5.400</td><td class="td-green">R$ 5.400</td><td><span class="status aprovada">APROVADA</span></td></tr>
-                <tr><td>20 Out 08:30</td><td>Calibração sensor pH</td><td class="td-muted">Desvio padrão alto últimas 4h</td><td>R$ 2.100</td><td class="td-green">R$ 2.300</td><td><span class="status aprovada">APROVADA</span></td></tr>
-              </tbody>
-            </table>
+
+        <div class="filters">
+          <div class="search-field">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"/>
+              <path d="m21 21-4.3-4.3"/>
+            </svg>
+            <input id="historySearch" type="text" placeholder="Buscar material ou componente..."/>
           </div>
-          <div class="pagination">
-            <button class="page-nav">‹ Anterior</button>
-            <button class="page-chip">1</button>
-            <button class="page-nav">2</button>
-            <button class="page-nav">3</button>
-            <button class="page-nav">Próxima ›</button>
+          <button class="field-btn">Últimas simulações</button>
+          <button class="field-btn">Todos os materiais</button>
+        </div>
+      </div>
+
+      <div class="grid grid-3">
+        <article class="card metric-card">
+          <div class="metric-top">
+            <div class="eyebrow">Total de simulações</div>
+          </div>
+          <div class="metric-value">47</div>
+        </article>
+
+        <article class="card metric-card" style="box-shadow:inset 3px 0 0 rgba(95,224,180,1),var(--shadow);border-color:rgba(95,224,180,0.28);">
+          <div class="metric-top">
+            <div class="eyebrow">Substituições aplicadas</div>
+          </div>
+          <div class="metric-value">
+            38 <span style="font-size:1.3rem;color:var(--green);">(81%)</span>
           </div>
         </article>
-        <div class="grid grid-history-bottom" style="margin-top:20px;">
-          <article class="card line-card">
-            <div class="panel-head"><div style="font-family:var(--font-display);font-size:1.5rem;font-weight:800;letter-spacing:-0.04em;">Receita Diária (30 dias)</div></div>
-            <div class="line-chart-container"><canvas id="dailyRevenueChart"></canvas></div>
-          </article>
-          <article class="card donut-card">
-            <div class="panel-head"><div style="font-family:var(--font-display);font-size:1.5rem;font-weight:800;letter-spacing:-0.04em;">Resultados das Recomendações</div></div>
-            <div class="donut-wrap">
-              <div class="donut">
-                <svg viewBox="0 0 120 120">
-                  <circle cx="60" cy="60" r="50" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="14"/>
-                  <circle cx="60" cy="60" r="50" fill="none" stroke="url(#donutGrad)" stroke-width="14" stroke-dasharray="314" stroke-dashoffset="60" stroke-linecap="round"/>
-                  <defs><linearGradient id="donutGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#31c48d"/><stop offset="100%" stop-color="#2563c8"/></linearGradient></defs>
-                </svg>
-                <div class="donut-center"><div><strong>47</strong><span>TOTAL</span></div></div>
-              </div>
-              <div class="donut-legend">
-                <div class="donut-legend-item"><span class="dot" style="background:linear-gradient(135deg,#31c48d,#2563c8)"></span><div><div>Aprovadas</div><div class="muted-block">38 (81%)</div></div></div>
-                <div class="donut-legend-item"><span class="dot" style="background:rgba(255,255,255,0.15)"></span><div><div>Rejeitadas</div><div class="muted-block">9 (19%)</div></div></div>
+
+        <article class="card metric-card" style="border-color:rgba(139,92,246,0.34);">
+          <div class="metric-top">
+            <div class="eyebrow" style="color:#c8b8ff;">CO₂ evitado</div>
+          </div>
+          <div class="metric-value">142.800 kg</div>
+        </article>
+      </div>
+
+      <article class="card table-card" style="margin-top:20px;">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Data</th>
+                <th>Componente</th>
+                <th>Material Atual → Proposto</th>
+                <th>Redução de CO₂</th>
+                <th>Redução de Peso</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+
+            <tbody id="historyTableBody">
+
+              <tr>
+                <td>24 Out</td>
+                <td>Chassi frontal</td>
+                <td>Aço virgem → Aço reciclado</td>
+                <td>−4.2 kg</td>
+                <td>−1.1 kg</td>
+                <td><span class="status aprovada">APLICADA</span></td>
+              </tr>
+
+              <tr>
+                <td>24 Out</td>
+                <td>Painel interno</td>
+                <td>Plástico ABS → Polímero reciclado</td>
+                <td>−1.8 kg</td>
+                <td>−0.4 kg</td>
+                <td><span class="status rejeitada">DESCARTADA</span></td>
+              </tr>
+
+              <tr>
+                <td>23 Out</td>
+                <td>Suporte lateral</td>
+                <td>Alumínio → Alumínio reciclado</td>
+                <td>−0.8 kg</td>
+                <td>−0.2 kg</td>
+                <td><span class="status pendente">EM ANÁLISE</span></td>
+              </tr>
+
+              <tr>
+                <td>22 Out</td>
+                <td>Estrutura base</td>
+                <td>Aço → Liga leve</td>
+                <td>−12.0 kg</td>
+                <td>−3.5 kg</td>
+                <td><span class="status aprovada">APLICADA</span></td>
+              </tr>
+
+              <tr>
+                <td>21 Out</td>
+                <td>Carcaça externa</td>
+                <td>Plástico virgem → Bioplástico</td>
+                <td>−5.4 kg</td>
+                <td>−1.2 kg</td>
+                <td><span class="status aprovada">APLICADA</span></td>
+              </tr>
+
+              <tr>
+                <td>20 Out</td>
+                <td>Suporte interno</td>
+                <td>Aço → Aço reciclado</td>
+                <td>−2.1 kg</td>
+                <td>−0.6 kg</td>
+                <td><span class="status aprovada">APLICADA</span></td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+
+        <div class="pagination">
+          <button class="page-nav">‹ Anterior</button>
+          <button class="page-chip">1</button>
+          <button class="page-nav">2</button>
+          <button class="page-nav">3</button>
+          <button class="page-nav">Próxima ›</button>
+        </div>
+      </article>
+
+      <div class="grid grid-history-bottom" style="margin-top:20px;">
+
+        <article class="card line-card">
+          <div class="panel-head">
+            <div style="font-family:var(--font-display);font-size:1.5rem;font-weight:800;letter-spacing:-0.04em;">
+              CO₂ Evitado (30 dias)
+            </div>
+          </div>
+          <div class="line-chart-container">
+            <canvas id="dailyRevenueChart"></canvas>
+          </div>
+        </article>
+
+        <article class="card donut-card">
+          <div class="panel-head">
+            <div style="font-family:var(--font-display);font-size:1.5rem;font-weight:800;">
+              Resultado das Substituições
+            </div>
+          </div>
+
+          <div class="donut-wrap">
+
+            <div class="donut">
+              <svg viewBox="0 0 120 120">
+                <circle cx="60" cy="60" r="50" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="14"/>
+                <circle cx="60" cy="60" r="50" fill="none" stroke="url(#donutGrad)" stroke-width="14" stroke-dasharray="314" stroke-dashoffset="60" stroke-linecap="round"/>
+                <defs>
+                  <linearGradient id="donutGrad" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#31c48d"/>
+                    <stop offset="100%" stop-color="#2563c8"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+
+              <div class="donut-center">
+                <div>
+                  <strong>47</strong>
+                  <span>TOTAL</span>
+                </div>
               </div>
             </div>
-          </article>
-        </div>
+
+            <div class="donut-legend">
+              <div class="donut-legend-item">
+                <span class="dot" style="background:linear-gradient(135deg,#31c48d,#2563c8)"></span>
+                <div>
+                  <div>Aplicadas</div>
+                  <div class="muted-block">38 (81%)</div>
+                </div>
+              </div>
+
+              <div class="donut-legend-item">
+                <span class="dot" style="background:rgba(255,255,255,0.15)"></span>
+                <div>
+                  <div>Descartadas</div>
+                  <div class="muted-block">9 (19%)</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </article>
+
       </div>
     </div>
   </div>
+</div>
 
 </div><!-- end app -->
 
